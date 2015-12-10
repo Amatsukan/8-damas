@@ -67,13 +67,25 @@ namespace attack{
 };
 
 namespace operations{
-    auto put = [](std::pair<int,int> location){
-            chessTable[location.first][location.second] = true;
-    };
-    
-    auto remove = [](std::pair<int,int> location){
-            chessTable[location.first][location.second] = false;
-    };
+    namespace {
+        static int put_total = 0;
+    }
+
+    auto total() {
+        return put_total;
+    }
+
+    auto put(const std::pair<int,int>& location) {
+        ++put_total;
+        chessTable[location.first][location.second] = true;
+        return put_total;
+    }
+
+    auto remove(const std::pair<int,int>& location) {
+        --put_total;
+        chessTable[location.first][location.second] = false;
+        return put_total;
+    }
 
     auto can_put = [](std::pair<int,int> location){
         
