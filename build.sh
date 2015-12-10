@@ -1,1 +1,1 @@
-g++ *.cpp -std=c++11 -o bin
+g++ *.cpp -std=c++14 -o bin
